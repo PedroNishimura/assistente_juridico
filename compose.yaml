@@ -1,0 +1,14 @@
+services:
+  assistente:
+    build: .
+    image: assistente-escritorio:local
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    volumes:
+      - modelo_huggingface:/home/app/.cache/huggingface
+    restart: unless-stopped
+
+volumes:
+  modelo_huggingface:
